@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://dv20aup8cmnde"]
+
+[ext_resource type="Texture2D" uid="uid://bd1j8830lfoyc" path="res://Textures/SolAsteroidBeltHDRI.png" id="1_d5lh8"]
+[ext_resource type="PackedScene" uid="uid://c40p5j6rn37o0" path="res://ship.tscn" id="2_81phd"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_81phd"]
+panorama = ExtResource("1_d5lh8")
+
+[sub_resource type="Sky" id="Sky_qtpbo"]
+sky_material = SubResource("PanoramaSkyMaterial_81phd")
+
+[sub_resource type="Environment" id="Environment_rxlph"]
+background_mode = 2
+sky = SubResource("Sky_qtpbo")
+
+[node name="Space" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rxlph")
+
+[node name="SpaceShip" parent="." instance=ExtResource("2_81phd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0031153, 0, 0.000225782)
+mass = 2.698
+
+[node name="Camera3D" type="Camera3D" parent="SpaceShip"]
+transform = Transform3D(-3.73547e-08, -0.519325, 0.854577, -2.27004e-08, 0.854577, 0.519325, -1, 1.77636e-15, -4.37114e-08, 0.568788, 0.34767, 0.00710917)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.216991, 0.136719, 0.966552, -0.858279, -0.444985, 0.255627, 0.465051, -0.88504, 0.0207853, 22.777, 3.94067, 0.00904638)
+light_energy = 11.514
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85917, 0, -2.02795)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0084, 0, -4.63879)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D3"]
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0084, 0, 9.15412)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D4"]
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0084, -16.4702, -4.63879)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D5"]
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0084, -16.4702, 9.15412)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D6"]
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0084, 14.2966, -4.63879)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D7"]
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0084, 14.2966, 9.15412)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGBox3D8"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85917, 0, 4.53559)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(-0.0366512, 9.99993, 0, -9.99993, -0.0366512, 0, 0, 0, 10, -67.1458, 0.119293, -2.49709)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://c40p5j6rn37o0"]
+
+[ext_resource type="Script" uid="uid://d3gjaybd48y6v" path="res://flight.gd" id="1_l3rv8"]
+[ext_resource type="ArrayMesh" uid="uid://dr1hq6dhi0wrm" path="res://Sample_Ship.obj" id="2_4cq66"]
+[ext_resource type="Texture2D" uid="uid://btjgscir8kjxu" path="res://Textures/sh3.jpg" id="3_v4325"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4325"]
+albedo_texture = ExtResource("3_v4325")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4cq66"]
+
+[node name="Vessel" type="RigidBody3D"]
+mass = 306.539
+gravity_scale = 0.0
+script = ExtResource("1_l3rv8")
+
+[node name="SampleShip" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46652, 0, -2.05555)
+mesh = ExtResource("2_4cq66")
+surface_material_override/0 = SubResource("StandardMaterial3D_v4325")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.00156213, -0.429996, 0.000907492, 0.429997, 0.00156095, -0.00056098, 0.000557681, 0.000909524, 0.429999, 0.0137996, 0.0462902, 0)
+shape = SubResource("CapsuleShape3D_4cq66")
