@@ -3,7 +3,8 @@ extends RigidBody3D
 @export var thrust = 20.0
 @export var torque_strength = 1.0
 @export var max_roll_speed: float = 2.0 # radians per second
-@export var roll_acceleration: float = 3.
+@export var roll_acceleration: float = 4.
+@export var damp: float = 2.0  # how aggressively we brake
 
 func _physics_process(_delta):
 	# Forward thrust
@@ -40,6 +41,19 @@ func _physics_process(_delta):
 	elif Input.is_action_pressed("roll_right"):
 		if current_roll_speed < max_roll_speed:
 			apply_torque(transform.basis.x * -roll_acceleration)
+	else:
+		self.angular_damp = damp
+	
+	if abs(current_roll_speed) < 0.05:
+		current_roll_speed = 0
+	
+	if current_roll_speed > 2.00:
+		current_roll_speed = 2.00
+	elif current_roll_speed < -2.00:
+		current_roll_speed = -2.00
+		
+
+	
 		
 	print("Current Roll Speed: ", current_roll_speed)
 
