@@ -1,7 +1,7 @@
 extends RigidBody3D
 
-@export var thrust = 20.0
-@export var torque_strength = 1.0
+@export var thrust = 40.0
+@export var torque_strength = 5.0
 @export var max_roll_speed: float = 2.0 # radians per second
 @export var roll_acceleration: float = 4.
 @export var damp: float = 2.0  # how aggressively we brake
@@ -11,23 +11,23 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("strafe_forward"):
 		apply_central_force(-transform.basis.x * thrust)
 	if Input.is_action_pressed("strafe_back"):
-		apply_central_force(transform.basis.x * thrust / 2)
+		apply_central_force(transform.basis.x * thrust)
 	
 	if Input.is_action_pressed("strafe_up"):
-		apply_central_force(transform.basis.y * thrust / 2)
+		apply_central_force(transform.basis.y * thrust * .5)
 	if Input.is_action_pressed("strafe_down"):
-		apply_central_force(-transform.basis.y * thrust / 2)
+		apply_central_force(-transform.basis.y * thrust * .5)
 		
 	if Input.is_action_pressed("strafe_left"):
-		apply_central_force(transform.basis.z * thrust / 2)
+		apply_central_force(transform.basis.z * thrust * .5)
 	if Input.is_action_pressed("strafe_right"):
-		apply_central_force(-transform.basis.z * thrust / 2)
+		apply_central_force(-transform.basis.z * thrust * .5)
 
 	# Yaw
 	if Input.is_action_pressed("yaw_left"):
-		apply_torque(Vector3.UP * -torque_strength / 2)
+		apply_torque(Vector3.UP * -torque_strength)
 	if Input.is_action_pressed("yaw_right"):
-		apply_torque(Vector3.UP * torque_strength / 2)
+		apply_torque(Vector3.UP * torque_strength)
 
 	# ----------------------------
 	# Roll
@@ -43,25 +43,17 @@ func _physics_process(_delta):
 			apply_torque(transform.basis.x * -roll_acceleration)
 	else:
 		self.angular_damp = damp
-	
-	if abs(current_roll_speed) < 0.05:
-		current_roll_speed = 0
-	
-	if current_roll_speed > 2.00:
-		current_roll_speed = 2.00
-	elif current_roll_speed < -2.00:
-		current_roll_speed = -2.00
 		
 
 	
 		
-	print("Current Roll Speed: ", current_roll_speed)
+	print("Current Roll Speed: ", local_angular_velocity)
 
 	# Pitch	
 	if Input.is_action_pressed("pitch_up"):
-		apply_torque(Vector3.BACK * -torque_strength / 2)
+		apply_torque(Vector3.BACK * -torque_strength)
 	if Input.is_action_pressed("pitch_down"):
-		apply_torque(Vector3.BACK * torque_strength / 2)
+		apply_torque(Vector3.BACK * torque_strength)
 		
 	# ── Get forward speed (in m/s) ─────────────────────────────
 	var forward_dir = -transform.basis.x.normalized()
