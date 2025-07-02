@@ -38,16 +38,14 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("roll_left"):
 		if current_roll_speed > -max_roll_speed:
 			apply_torque(transform.basis.x * roll_acceleration)
-	elif Input.is_action_pressed("roll_right"):
+	else:
+		self.angular_damp = damp
+		
+	if Input.is_action_pressed("roll_right"):
 		if current_roll_speed < max_roll_speed:
 			apply_torque(transform.basis.x * -roll_acceleration)
 	else:
 		self.angular_damp = damp
-		
-
-	
-		
-	print("Current Roll Speed: ", local_angular_velocity)
 
 	# Pitch	
 	if Input.is_action_pressed("pitch_up"):
@@ -58,4 +56,4 @@ func _physics_process(_delta):
 	# ── Get forward speed (in m/s) ─────────────────────────────
 	var forward_dir = -transform.basis.x.normalized()
 	var forward_speed = linear_velocity.dot(forward_dir)
-	print("Forward speed: ", forward_speed, " m/s")
+	print("Forward speed: ", snapped(forward_speed, 0.01), " m/s")
