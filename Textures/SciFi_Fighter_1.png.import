@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cvm74r5x8gvsk"
+path.s3tc="res://.godot/imported/SciFi_Fighter_1.png-5275b1a88860c233bc25d771f7f54c6e.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "e4eac649a4552471d82a9d9646ba3080"
+}
+
+[deps]
+
+source_file="res://Textures/SciFi_Fighter_1.png"
+dest_files=["res://.godot/imported/SciFi_Fighter_1.png-5275b1a88860c233bc25d771f7f54c6e.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
